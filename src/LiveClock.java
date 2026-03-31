@@ -6,13 +6,11 @@ import java.util.Date;
 public class LiveClock extends JFrame {
 
     public LiveClock() {
-        // إعدادات الفريم
-        this.setTitle(" Live Clock ");
+     this.setTitle(" Live Clock ");
         this.setSize(400, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // إضافة البانل
-        MyPanel panel = new MyPanel();
+         MyPanel panel = new MyPanel();
         this.add(panel);
 
         this.setVisible(true);
@@ -30,7 +28,6 @@ class MyPanel extends JPanel implements Runnable {
     public MyPanel() {
         this.setBackground(Color.GREEN);
 
-        // تشغيل Thread
         Thread t = new Thread(this);
         t.start();
     }
@@ -39,8 +36,7 @@ class MyPanel extends JPanel implements Runnable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // رسم الوقت على الشاشة
-        g.setFont(new Font("Arial", Font.BOLD, 18));
+         g.setFont(new Font("Arial", Font.BOLD, 18));
         g.drawString(currentTime, 80, 100);
     }
 
@@ -48,15 +44,12 @@ class MyPanel extends JPanel implements Runnable {
     public void run() {
         while (true) {
             try {
-                // نجيب الوقت الحالي
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 currentTime = sdf.format(new Date());
 
-                // نعيد الرسم
                 repaint();
 
-                // استنى ثانية
-                Thread.sleep(1000);
+                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
